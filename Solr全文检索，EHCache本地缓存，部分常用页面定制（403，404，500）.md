@@ -206,7 +206,9 @@ public Page selectPage(String coreName, String query, Page page, String... filte
 
 </pre>
 
-1.2.2 使用案例：
+
+
+#### 1.2.2 使用案例：
     
     @Auth
     @RestController
@@ -539,17 +541,15 @@ Solr安装信息：http://www.cnblogs.com/tony-zt/p/9260017.html
         </dataConfig>
 
 
- ***4 重新启动Solr,选择template,点击左侧栏的schema，创建与data-config.xml相对应的Filed字段，再点击左侧栏的Dataimport，点击Execute，会显示indexing…，再点击Refresh Status，数据就导入进来了***
+***4 重新启动Solr,选择template,点击左侧栏的schema，创建与data-config.xml相对应的Filed字段，再点击左侧栏的Dataimport，点击Execute，会显示indexing…，再点击Refresh Status，数据就导入进来了***
 ![solr2.png-51.2kB][3]
-
 ![solr3.png-40.7kB][4]
+***5 结果查看***
+![solr4.png-51.9kB][5]
 
-  ***5 结果查看***
- ![solr4.png-51.9kB][5]
 
-
-  [1]: http://static.zybuluo.com/1528992118/92a7gvm7lxhoaz7ozyb2ophy/404.png
-  [2]: http://static.zybuluo.com/1528992118/nbjj5ns70o95ig00joanqllk/solr_1.png
-  [3]: http://static.zybuluo.com/1528992118/7d6d8pe8u1zryduvzj0vn2d8/solr2.png
-  [4]: http://static.zybuluo.com/1528992118/9s47xjlmn44wj7oa54f0804z/solr3.png
-  [5]: http://static.zybuluo.com/1528992118/5kss38ljdpmuvo7l7op9plo8/solr4.png
+[1]: http://static.zybuluo.com/1528992118/92a7gvm7lxhoaz7ozyb2ophy/404.png
+[2]: http://static.zybuluo.com/1528992118/nbjj5ns70o95ig00joanqllk/solr_1.png
+[3]: http://static.zybuluo.com/1528992118/7d6d8pe8u1zryduvzj0vn2d8/solr2.png
+[4]: http://static.zybuluo.com/1528992118/9s47xjlmn44wj7oa54f0804z/solr3.png
+[5]: http://static.zybuluo.com/1528992118/5kss38ljdpmuvo7l7op9plo8/solr4.png
