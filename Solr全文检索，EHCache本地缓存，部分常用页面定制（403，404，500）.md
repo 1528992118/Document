@@ -23,24 +23,44 @@
   solr中有个很重要的概念**core**，core是solr的一个索引库，可以理解为一个数据库，core可以根据需要，创建多个，其下有个**schema.xml**用于配置索引类型，可以理解为表结构，solr-5.5版本后没有了schema.xml，可以直接在在线配置schema，不再需要去改xml
 
   * **Solr-CURD接口总览：**
+  
    `public boolean save(String coreName, Object object)` 
+   
    `public boolean save(String coreName, Map<String, Object> map)`
+   
    `public boolean saveByReflect(String coreName, Object object)`
+   
    `public int batchSave(String coreName, List<Object> list)`
+   
    `public boolean deleteById(String coreName, String id)`
+   
    `public int deleteById(String coreName, List<String> ids)`
+   
    `public boolean deleteByQuery(String coreName, String query)`
+   
    `public boolean deleteAll(String coreName)`
+   
    `public SolrDocumentList selectAll(String coreName)`
+   
    `public List<Object> selectAll(String coreName, Class<?> clazz)`
+   
    `public SolrDocument selectById(String coreName, String id)`
+   
    `public Object selectById(String coreName, String id, Class<?> clazz)`
+   
    `public SolrDocumentList selectList(String coreName, String... filterQuerys)`
+   
    `public List<Object> selectList(String coreName, Class<?> clazz, String... filterQuerys)`
+   
    `public SolrDocumentList selectList(String coreName, String query, String... filterQuerys)`
+   
    `public List<Object> selectList(String coreName, String query, Class<?> clazz, String... filterQuerys)`
+   
    `public int selectCount(String coreName, String query, String... filterQuerys)`
+   
    `public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
+   
+   
   * 类位置：`com.enjoyor.soa.traffic.frame.support.solr.ISolrService`
   * solr同步数据库，该场景可用于某些大数据表格，通过solr的全文索引技术，加快查询速度，其具体配置跳转 [Solr配置](#SolrConfig)
 
@@ -54,10 +74,15 @@
   2.针对Dubbo-Server层进行缓存，提高某些Dubbo接口的查询速度。**（在使用前请确保已经完全理解缓存机制，避免其他内容更新后，查询的还是原来的旧数据）**
  
   * **EHCache-CURD接口总览：**
+  
   `public Object get(String cacheName, Object key);`
+  
   `public boolean set(String cacheName, String key, Object value);`
+  
   `public boolean removeCache(String cacheName);`
+  
   `public boolean removeElment(String cacheName, String key);`
+ 
 
   * 类位置：`com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService`
 
@@ -113,20 +138,19 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 []  包含范围检索，如检索某时间段记录，包含头尾，date:[201507 TO 201510]
 {}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}
 　
-
- `public boolean save(String coreName, Object object)`
+` public boolean save(String coreName, Object object)`
 > 插入或修改数据：该方法用于被@Field注解的Object的保存,@Field用于适配Solr上的scheme.xml，如果有hibernate使用经验，应该很好理解。**(对于solr而言，其一个core相当于一个database,其下只冗余一张表，所以没有更新一说，save操作既是insert也是update)**
 
- `public boolean save(String coreName, Map<String, Object> map)`
+`public boolean save(String coreName, Map<String, Object> map)`
 > 插入或修改数据：该方法比较容易理解，操作Map对象进行存储，map的key值具体对应solr服务器core端的字段名，value对应具体值，与前一个save方法相比，不需要创建具体对象。
     
- `public boolean saveByReflect(String coreName,Object object)`
+`public boolean saveByReflect(String coreName,Object object)`
 > 插入或修改数据：通过反射方式，根据对象类属性，自动完成适配，对应solr服务器core端的字段名，不需要@Field修饰每个类属性,若有@Field修饰,则优先采用Field中value值
 
- `public int batchSave(String coreName, List<Object> list)`
+`public int batchSave(String coreName, List<Object> list)`
 > 批量存储(插入或和更新)：该方法为批量操作数据，被操作的Object需要@Field注解，用于匹配scheme.xml，返回操作成功记录数
 
- `public boolean deleteById(String coreName, String id)`
+`public boolean deleteById(String coreName, String id)`
 > 按Id号删除数据
 
 `public int deleteById(String coreName, List<String> ids)`
@@ -169,6 +193,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 > 按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
 
 1.2.2 使用案例：
+<pre>
     
     @Auth
     @RestController
@@ -241,10 +266,13 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
         
     }
     
-    
+</pre>   
+
 ## 2 EHCache本地缓存使用
-###2.1 使用准备
+### 2.1 使用准备
 2.1.2 **配置文件(ehcache.xml)，位于项目resources目录下**
+
+<pre>
 
     <?xml version="1.0" encoding="UTF-8"?>
     <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
@@ -274,25 +302,38 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
         </cache>
         
     </ehcache>
+    
+ </pre>   
 
 2.1.2.1 配置文件说明
 
 **diskStore**   &nbsp;&nbsp;指定一个文件目录，当EHCache把数据写到硬盘上时，将把数据写到这个文件目录下，也可以指定为 `<diskStore path="D:\Data\ehcache" />`
+
 **defaultCache**  &nbsp;&nbsp;默认的管理策略
+
 **cache name="userCache"**  &nbsp;&nbsp;自定义的cache名，接下去的操作以以这个为准
+
 **eternal**  &nbsp;&nbsp;true表示对象永不过期，此时会忽略timeToIdleSeconds和timeToLiveSeconds属性，默认为false
+
 **maxElementsInMemory**  &nbsp;&nbsp;内存中最大缓存对象数，看着自己的heap大小来搞 
+
 **overflowToDisk**  &nbsp;&nbsp;true表示当内存缓存的对象数目达到了maxElementsInMemory界限后， 会把溢出的对象写到硬盘缓存中。注意：如果缓存的对象要写入到硬盘中的话，则该对象必须实现了Serializable接口才行。
+
 **diskPersistent**  &nbsp;&nbsp;是否缓存虚拟机重启期数据
+
 **timeToIdleSeconds**  &nbsp;&nbsp;设定允许对象处于空闲状态的最长时间，以秒为单位。当对象自从最近一次被访问后， 如果处于空闲状态的时间超过了timeToIdleSeconds属性值，这个对象就会过期，EHCache将把它从缓存中清空。只有当eternal属性为false，该属性才有效。如果该属性值为0，则表示对象可以无限期地处于空闲状态
+
 **timeToLiveSeconds**  &nbsp;&nbsp;设定对象允许存在于缓存中的最长时间，以秒为单位。当对象自从被存放到缓存中后， 如果处于缓存中的时间超过了timeToLiveSeconds属性值，这个对象就会过期，EHCache将把它从缓存中清除。只有当eternal属性为false，该属性才有效。如果该属性值为0，则表示对象可以无限期地存在于缓存中。timeToLiveSeconds必须大于timeToIdleSeconds属性，才有意义
+
 **memoryStoreEvictionPolicy**     &nbsp;&nbsp;当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。可选策略有：**LRU**（最近最少使用，默认策略）、 **FIFO**（先进先出）、**LFU**（最少访问次数）
 
 2.1.3 **启动项注入配置类**
-
+<pre>
     @SpringBootApplication
     @Import({ EhCacheConfig.class })
     public class RestApplication 
+</pre>    
+    
 
 ### 2.2 使用
 2.2.1 **com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService**说明
@@ -312,6 +353,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 > 删除cacheName下具体key值对应的数据。
 
 2.2.2 使用案例：
+<pre>
     @Auth
     @RestController
     @RequestMapping({ "/api/template" })
@@ -350,10 +392,10 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
          }
     
     }
-    
+</pre>    
 ### 2.3 dubbo-service（添加缓存，慎用）
 
-
+<pre>
     @SuppressWarnings("rawtypes")
     @Service(version = "1.0.0", timeout = 4000)
     public class DubboTemplateService implements IDubboTemplateService {
@@ -385,6 +427,8 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
         }
         
     }
+
+</pre>
 
 2.3.1 注解说明：
 
