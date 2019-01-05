@@ -6,7 +6,8 @@
 2018/6/13 | V 1.0.0| 曹晓龙
 
 ##1.前言
-###1.1 ***什么是SpringBoot***
+###1.1 
+***什么是SpringBoot***
 
     springboot就是一个大框架里面包含了许许多多的东西，其中spring就是最核心的内容之一，当然就包含spring mvc。
 
@@ -18,13 +19,15 @@
     提供默认的配置，然后提供可插拔的设计，就是各种starter ，来方便开发者使用这一系列的技术
     
     
-###1.2 ***比较传统项目优势***
+###1.2 
+***比较传统项目优势***
 - Spring Boot可以建立独立的Spring应用程序；
 - 内嵌了如Tomcat，Jetty这样的容器，也就是说可以直接跑起来
 - 无需再像Spring那样搞一堆繁琐的xml文件的配置
 - spring 官方为其提供了一系列默认配置，可以自动配置Spring，往往只需在其application.properties文件   中默认配置一些相关声明就可以
 
-###1.3 ***示例展示*** 
+###1.3 
+***示例展示*** 
 
     现在有项目A(Springboot)，在他的pom配置文件中添加相关依赖：
     
@@ -586,6 +589,5 @@ public class DubboTestCallbackService implements IDubboTestCallbackService {
 
 ![springboot2.png-57.8kB][2]
 
-
-  [1]: http://static.zybuluo.com/1528992118/ueczvioywrtxjxnnnn9uboit/springboot1.png
-  [2]: http://static.zybuluo.com/1528992118/ymwkltkexicu8eeaz99oep2p/springboot2.png
+[1]: http://static.zybuluo.com/1528992118/ueczvioywrtxjxnnnn9uboit/springboot1.png
+[2]: http://static.zybuluo.com/1528992118/ymwkltkexicu8eeaz99oep2p/springboot2.png
