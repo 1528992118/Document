@@ -149,7 +149,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 {}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}
 
 　
-
+<pre>
 `public boolean save(String coreName, Object object)`
 > 插入或修改数据：该方法用于被@Field注解的Object的保存,@Field用于适配Solr上的scheme.xml，如果有hibernate使用经验，应该很好理解。**(对于solr而言，其一个core相当于一个database,其下只冗余一张表，所以没有更新一说，save操作既是insert也是update)**
 
@@ -198,11 +198,13 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 `  List<Object> selectList(String coreName, String query, Class<?> clazz, String... filterQuerys)`
 > 按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
 
-`  public int selectCount(String coreName, String query, String... filterQuerys)`
+public int selectCount(String coreName, String query, String... filterQuerys)
 > 按查询条件和过滤条件查询数量，query，filterQuerys可为null,为null则查询全部
 
-`  public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
-> 按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
+public Page selectPage(String coreName, String query, Page page, String... filterQuerys)
+按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
+
+</pre>
 
 1.2.2 使用案例：
     
@@ -314,14 +316,23 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 2.1.2.1 配置文件说明
 
 **diskStore**   &nbsp;&nbsp;指定一个文件目录，当EHCache把数据写到硬盘上时，将把数据写到这个文件目录下，也可以指定为 `<diskStore path="D:\Data\ehcache" />`
+
 **defaultCache**  &nbsp;&nbsp;默认的管理策略
+
 **cache name="userCache"**  &nbsp;&nbsp;自定义的cache名，接下去的操作以以这个为准
+
 **eternal**  &nbsp;&nbsp;true表示对象永不过期，此时会忽略timeToIdleSeconds和timeToLiveSeconds属性，默认为false
+
 **maxElementsInMemory**  &nbsp;&nbsp;内存中最大缓存对象数，看着自己的heap大小来搞 
+
 **overflowToDisk**  &nbsp;&nbsp;true表示当内存缓存的对象数目达到了maxElementsInMemory界限后， 会把溢出的对象写到硬盘缓存中。注意：如果缓存的对象要写入到硬盘中的话，则该对象必须实现了Serializable接口才行。
+
 **diskPersistent**  &nbsp;&nbsp;是否缓存虚拟机重启期数据
+
 **timeToIdleSeconds**  &nbsp;&nbsp;设定允许对象处于空闲状态的最长时间，以秒为单位。当对象自从最近一次被访问后， 如果处于空闲状态的时间超过了timeToIdleSeconds属性值，这个对象就会过期，EHCache将把它从缓存中清空。只有当eternal属性为false，该属性才有效。如果该属性值为0，则表示对象可以无限期地处于空闲状态
+
 **timeToLiveSeconds**  &nbsp;&nbsp;设定对象允许存在于缓存中的最长时间，以秒为单位。当对象自从被存放到缓存中后， 如果处于缓存中的时间超过了timeToLiveSeconds属性值，这个对象就会过期，EHCache将把它从缓存中清除。只有当eternal属性为false，该属性才有效。如果该属性值为0，则表示对象可以无限期地存在于缓存中。timeToLiveSeconds必须大于timeToIdleSeconds属性，才有意义
+
 **memoryStoreEvictionPolicy**     &nbsp;&nbsp;当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。可选策略有：**LRU**（最近最少使用，默认策略）、 **FIFO**（先进先出）、**LFU**（最少访问次数）
 
 2.1.3 **启动项注入配置类**
