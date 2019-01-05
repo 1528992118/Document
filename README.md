@@ -9,6 +9,6 @@
 
 # Features
 
-### 项目主体框架 [传送门](https://www.zybuluo.com/1528992118/note/1115387)
+### 项目主体框架 [传送门](https://github.com/1528992118/Document/blob/master/Enjoyor-Springboot%20%E6%A1%86%E6%9E%B6.md)
 ### Kafka集成及相关监控 [传送门](https://www.zybuluo.com/1528992118/note/1115387)
 ### Solr全文检索，EHCache本地缓存 [传送门](https://www.zybuluo.com/1528992118/note/1115387)
