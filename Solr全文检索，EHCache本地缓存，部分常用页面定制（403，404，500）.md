@@ -151,59 +151,58 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 　
 
 `public boolean save(String coreName, Object object)`
-> 插入或修改数据：该方法用于被@Field注解的Object的保存,@Field用于适配Solr上的scheme.xml，如果有hibernate使用经验，应该很好理解。**(对于solr而言，其一个core相当于一个database,其下只冗余一张表，所以没有更新一说，save操作既是insert也是update)**
+插入或修改数据：该方法用于被@Field注解的Object的保存,@Field用于适配Solr上的scheme.xml，如果有hibernate使用经验，应该很好理解。**(对于solr而言，其一个core相当于一个database,其下只冗余一张表，所以没有更新一说，save操作既是insert也是update)**
 
 `public boolean save(String coreName, Map<String, Object> map)`
-> 插入或修改数据：该方法比较容易理解，操作Map对象进行存储，map的key值具体对应solr服务器core端的字段名，value对应具体值，与前一个save方法相比，不需要创建具体对象。
+插入或修改数据：该方法比较容易理解，操作Map对象进行存储，map的key值具体对应solr服务器core端的字段名，value对应具体值，与前一个save方法相比，不需要创建具体对象。
     
 `public boolean saveByReflect(String coreName,Object object)`
-> 插入或修改数据：通过反射方式，根据对象类属性，自动完成适配，对应solr服务器core端的字段名，不需要@Field修饰每个类属性,若有@Field修饰,则优先采用Field中value值
+插入或修改数据：通过反射方式，根据对象类属性，自动完成适配，对应solr服务器core端的字段名，不需要@Field修饰每个类属性,若有@Field修饰,则优先采用Field中value值
 
 `public int batchSave(String coreName, List<Object> list)`
-> 批量存储(插入或和更新)：该方法为批量操作数据，被操作的Object需要@Field注解，用于匹配scheme.xml，返回操作成功记录数
+批量存储(插入或和更新)：该方法为批量操作数据，被操作的Object需要@Field注解，用于匹配scheme.xml，返回操作成功记录数
 
 `public boolean deleteById(String coreName, String id)`
-> 按Id号删除数据
+按Id号删除数据
 
 `public int deleteById(String coreName, List<String> ids)`
-> 按Id列表批量删除数据
+按Id列表批量删除数据
 
 `public boolean deleteByQuery(String coreName, String query)`
-> 按自定义条件删除数据
+按自定义条件删除数据
 
 `public boolean deleteAll(String coreName)`
-> 删除索引库下所有数据，慎用
+删除索引库下所有数据，慎用
 
 `public SolrDocumentList selectAll(String coreName)`
-> 查询索引库下所有数据，返回结果为SolrDocumentList，其为SolrDocument的一个集合
+查询索引库下所有数据，返回结果为SolrDocumentList，其为SolrDocument的一个集合
 
 `public List<Object> selectAll(String coreName, Class<?> clazz)`
-> 查询索引库下所有数据，返回结果为List<Object>，object类型根据clazz而具体实例化
+查询索引库下所有数据，返回结果为List<Object>，object类型根据clazz而具体实例化
 
 `public SolrDocument selectById(String coreName, String id)`
-> 按id查询数据，返回结果为SolrDocument
+按id查询数据，返回结果为SolrDocument
 
 `public Object selectById(String coreName, String id, Class<?> clazz)`
-> 按id查询数据，返回结果为根据clazz而具体实例化
+按id查询数据，返回结果为根据clazz而具体实例化
 
 `public SolrDocumentList selectList(String coreName, String... filterQuerys)`
-> 按过滤条件查询，filterQuerys可为null,为null则查询全部，返回结果为SolrDocumentList，其为SolrDocument的一个集合
+按过滤条件查询，filterQuerys可为null,为null则查询全部，返回结果为SolrDocumentList，其为SolrDocument的一个集合
 
 `public List<Object> selectList(String coreName, Class<?> clazz, String... filterQuerys)`
-> 按过滤条件查询，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
+按过滤条件查询，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
 
 `public SolrDocumentList selectList(String coreName, String query, String... filterQuerys)`
-> 按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为SolrDocumentList，其为SolrDocument的一个集合
+按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为SolrDocumentList，其为SolrDocument的一个集合
 
 `List<Object> selectList(String coreName, String query, Class<?> clazz, String... filterQuerys)`
-> 按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
+按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
 
 `public int selectCount(String coreName, String query, String... filterQuerys)`
-> 按查询条件和过滤条件查询数量，query，filterQuerys可为null,为null则查询全部
+按查询条件和过滤条件查询数量，query，filterQuerys可为null,为null则查询全部
 
 `public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
-> 按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
-
+按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
 
 
 #### 1.2.2 使用案例：
