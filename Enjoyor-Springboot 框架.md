@@ -5,9 +5,8 @@
 - | :-: | -:
 2018/6/13 | V 1.0.0| 曹晓龙
 
-##1.前言
-###1.1 
-***什么是SpringBoot***
+## 1.前言
+### 1.1 ***什么是SpringBoot***
 
     springboot就是一个大框架里面包含了许许多多的东西，其中spring就是最核心的内容之一，当然就包含spring mvc。
 
@@ -19,15 +18,13 @@
     提供默认的配置，然后提供可插拔的设计，就是各种starter ，来方便开发者使用这一系列的技术
     
     
-###1.2 
-***比较传统项目优势***
+### 1.2 ***比较传统项目优势***
 - Spring Boot可以建立独立的Spring应用程序；
 - 内嵌了如Tomcat，Jetty这样的容器，也就是说可以直接跑起来
 - 无需再像Spring那样搞一堆繁琐的xml文件的配置
 - spring 官方为其提供了一系列默认配置，可以自动配置Spring，往往只需在其application.properties文件   中默认配置一些相关声明就可以
 
-###1.3 
-***示例展示*** 
+### 1.3 ***示例展示*** 
 
     现在有项目A(Springboot)，在他的pom配置文件中添加相关依赖：
     
@@ -37,7 +34,7 @@
         <version>1.5.9.RELEASE</version>
      </dependency>
      
-####1.3.1 spring-boot-starter-web包含依赖：
+#### 1.3.1 spring-boot-starter-web包含依赖：
 
 ![springboot1.png-9.6kB][1]
 
@@ -52,19 +49,19 @@
      
      那如果没有相关start依赖呢，类似redis，log...这种常用的一般都会有相关start-pom；万一没有，或者由于其他某些原因，那可以通过@Configuration注入相关bean
 
-###1.4 ***运行springboot项目（以demo-rest为例）***
+### 1.4 ***运行springboot项目（以demo-rest为例）***
      找到相关主程序main函数，右键run as Java Application 即可
      
 ### 1.5 ***发布，运行***
      直接maven打包发布，将编译获得的jar直接java -jar xx.jar 就可以成功的运行项目
 
-###1.6  ***对开发者而言，意味着什么***
+### 1.6  ***对开发者而言，意味着什么***
 
     Spring家族发展到今天，已经很庞大了，作为一个开发者，如果想要使用Spring家族一系列的技术，需要一个一个的搞配置，然后还有个版本兼容性问题，其实挺麻烦的，偶尔也会有小坑出现，其实蛮影响开发进度,spring boot就是来解决这个问题，提供了一个解决方案吧，可以先不关心如何配置，可以快速的启动开发，进行业务逻辑编写，各种需要的技术，加入starter就配置好了，直接使用，可以说追求开箱即用的效果吧.
 
-##2.框架结构
+## 2.框架结构
 
-###2.1 框架总览
+### 2.1 框架总览
 
 - smart-traffic-frame (boot相关配置)
      - com.enjoyor.soa.traffic.frame
@@ -99,7 +96,7 @@
 
 
 
-###2.2 构建详情
+### 2.2 构建详情
 2.2.1 ***基础依赖（上层依赖）***
 <pre>
     smart-traffic-util  最上层jar
@@ -164,7 +161,7 @@ dubbo服务实现，其他dubbo调用
 
 
 
-##3.项目配置
+## 3.项目配置
 ***properties配置***
 
 &nbsp;&nbsp;&nbsp;3.1 *demo-server*
@@ -264,7 +261,7 @@ dubbo服务实现，其他dubbo调用
     sso.client.filter[urlPatterns]=*.html
 </pre>
 
-##4.开发指南
+## 4.开发指南
 
 ### 4.1 redis主要类(包)介绍说明
 ##### RedisConfig.java(com.enjoyor.soa.traffic.frame.configure下):
