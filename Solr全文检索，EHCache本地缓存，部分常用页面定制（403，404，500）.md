@@ -11,18 +11,18 @@
 <span id="Features"></span>
 # Features
 * ***Solr集成***
-  * **solr简介：**
+* **solr简介：**
 > Solr采用`Lucene`搜索库为核心，提供全文索引和搜索开源企业平台，提供REST的HTTP/XML和JSON的API，本次168服务器上搭建的为`7.2.0`版本的solr，服务器地址: http://192.168.91.168:8983/solr
 
          
-  * **业务场景：** 
-   1. solr主要用于对其他存储系统中已有的一些数据做分析，查询，然后显示结果。当然它也可以直接存储数据，但是这不是它的强项
-   2. 对原有的数据做分析，需要对文本做一些处理（格式或者其他的），然后才导入到solr中，利用solr强大的搜索功能，找到自己想要的结果
+* **业务场景：** 
+1. solr主要用于对其他存储系统中已有的一些数据做分析，查询，然后显示结果。当然它也可以直接存储数据，但是这不是它的强项
+2. 对原有的数据做分析，需要对文本做一些处理（格式或者其他的），然后才导入到solr中，利用solr强大的搜索功能，找到自己想要的结果
 
-  * **使用须知：** 
-  solr中有个很重要的概念**core**，core是solr的一个索引库，可以理解为一个数据库，core可以根据需要，创建多个，其下有个**schema.xml**用于配置索引类型，可以理解为表结构，solr-5.5版本后没有了schema.xml，可以直接在在线配置schema，不再需要去改xml
+* **使用须知：** 
+solr中有个很重要的概念**core**，core是solr的一个索引库，可以理解为一个数据库，core可以根据需要，创建多个，其下有个**schema.xml**用于配置索引类型，可以理解为表结构，solr-5.5版本后没有了schema.xml，可以直接在在线配置schema，不再需要去改xml
 
-  * **Solr-CURD接口总览：**
+* **Solr-CURD接口总览：**
   
    `public boolean save(String coreName, Object object)` 
    
@@ -60,19 +60,19 @@
    
    `public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
    
-  * 类位置：`com.enjoyor.soa.traffic.frame.support.solr.ISolrService`
-  * solr同步数据库，该场景可用于某些大数据表格，通过solr的全文索引技术，加快查询速度，其具体配置跳转 [Solr配置](#SolrConfig)
+* 类位置：`com.enjoyor.soa.traffic.frame.support.solr.ISolrService`
+* solr同步数据库，该场景可用于某些大数据表格，通过solr的全文索引技术，加快查询速度，其具体配置跳转 [Solr配置](#SolrConfig)
 
 * **EHCache缓存**
 
-  * **EHCache简介：**
+* **EHCache简介：**
 > 纯Java的进程内缓存框架，具有快速、精干等特点，可支持分布式，主要面向通用缓存,Java EE和轻量级容器。Spring提供了对缓存功能的抽象：即允许绑定不同的缓存解决方案（如Ehcache），但本身不直接提供缓存功能的实现。它支持注解方式使用缓存，非常方便。
 
-  * **业务场景：** 
-  1.单应用中直接对缓存进行存储读写，避免使用HashMap这种方式造成线程安全问题，或ConcurrentHashMap 造成的线程等待。
-  2.针对Dubbo-Server层进行缓存，提高某些Dubbo接口的查询速度。**（在使用前请确保已经完全理解缓存机制，避免其他内容更新后，查询的还是原来的旧数据）**
+* **业务场景：** 
+1.单应用中直接对缓存进行存储读写，避免使用HashMap这种方式造成线程安全问题，或ConcurrentHashMap 造成的线程等待。
+2.针对Dubbo-Server层进行缓存，提高某些Dubbo接口的查询速度。**（在使用前请确保已经完全理解缓存机制，避免其他内容更新后，查询的还是原来的旧数据）**
  
-  * **EHCache-CURD接口总览：**
+* **EHCache-CURD接口总览：**
   
   `public Object get(String cacheName, Object key);`
   
@@ -82,18 +82,18 @@
   
   `public boolean removeElment(String cacheName, String key);`
 
-  * 类位置：`com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService`
+* 类位置：`com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService`
 
 * **定制页面**
-  * 这部分内容比较简单，简略叙述。针对原先系统自带的403，404，415及500错误返回页，定制了简易的新页面。
-  * 定制页面位置：`smart-traffic-frame/src/main/resources/public/error`
-  * 效果图，以404为例：
-  ![404][1]
+* 这部分内容比较简单，简略叙述。针对原先系统自带的403，404，415及500错误返回页，定制了简易的新页面。
+* 定制页面位置：`smart-traffic-frame/src/main/resources/public/error`
+* 效果图，以404为例：
+![404][1]
   
 <span id="Development"></span>
 # Development
 ## 1 Solr-CURD服务使用
-###1.1 使用准备
+### 1.1 使用准备
 1.1.1 **使用须知**
 > **使用前请确保solr服务器上有相应的core和core下对应的scheme已配置完成（可以类比为操作数据库前，必须创建数据库和相关表结构）,7.2版本可直接在相应core下在线完成配置，以168上的为例：http://192.168.91.168:8983/solr/#/template/schema**
 
@@ -118,10 +118,11 @@
 **其下每个方法，都需要coreName，具体为索引库名，这里只说明一次；下面查询方法会反复出现`query`和`filterQuerys`，其用法可参考如下：**
 
 >**基本查询**
-| 参数 | 说明 | 示例 |
-| ------ | ------ | ------ |
-| q (query) | 查询的关键字，此参数最为重 | q=id:1，默认为q=\*:* |
-| fq（filter query） | 过虑查询，提供一个可选的筛选器查询。返回在q查询符合结果中同时符合的fq条件的查询结果 | q=id:1&fq=sort:[1 TO 5]，找关键字id为1 的，并且sort是1到5之间的数据 |
+
+ | 参数 | 说明 | 示例 |
+ | ------ | ------ | ------ |
+ | q (query) | 查询的关键字，此参数最为重 | q=id:1，默认为q=\*:* |
+ | fq（filter query） | 过虑查询，提供一个可选的筛选器查询。返回在q查询符合结果中同时符合的fq条件的查询结果 | q=id:1&fq=sort:[1 TO 5]，找关键字id为1 的，并且sort是1到5之间的数据 |
 
 >**Solr的检索运算符**
 
@@ -149,16 +150,16 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 
 　
 
- `public boolean save(String coreName, Object object)`
+`public boolean save(String coreName, Object object)`
 > 插入或修改数据：该方法用于被@Field注解的Object的保存,@Field用于适配Solr上的scheme.xml，如果有hibernate使用经验，应该很好理解。**(对于solr而言，其一个core相当于一个database,其下只冗余一张表，所以没有更新一说，save操作既是insert也是update)**
 
- `public boolean save(String coreName, Map<String, Object> map)`
+`public boolean save(String coreName, Map<String, Object> map)`
 > 插入或修改数据：该方法比较容易理解，操作Map对象进行存储，map的key值具体对应solr服务器core端的字段名，value对应具体值，与前一个save方法相比，不需要创建具体对象。
     
- `public boolean saveByReflect(String coreName,Object object)`
+`public boolean saveByReflect(String coreName,Object object)`
 > 插入或修改数据：通过反射方式，根据对象类属性，自动完成适配，对应solr服务器core端的字段名，不需要@Field修饰每个类属性,若有@Field修饰,则优先采用Field中value值
 
- `public int batchSave(String coreName, List<Object> list)`
+`public int batchSave(String coreName, List<Object> list)`
 > 批量存储(插入或和更新)：该方法为批量操作数据，被操作的Object需要@Field注解，用于匹配scheme.xml，返回操作成功记录数
 
  `public boolean deleteById(String coreName, String id)`
@@ -278,7 +279,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
     
     
 ## 2 EHCache本地缓存使用
-###2.1 使用准备
+### 2.1 使用准备
 2.1.2 **配置文件(ehcache.xml)，位于项目resources目录下**
 
     <?xml version="1.0" encoding="UTF-8"?>
