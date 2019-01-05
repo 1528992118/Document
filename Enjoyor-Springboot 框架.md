@@ -65,24 +65,24 @@
 
 - smart-traffic-frame (boot相关配置)
      - com.enjoyor.soa.traffic.frame
-           - annotation（自定义的一些注解）
-           - aop（controller,service拦截,日志输出）
-           - configure（核心配置,mybatis,redis,Swagger2等）
-           - constant
-           - domain（日志的相关bean）
-           - enums
-           - dubbo（启用dubbo注解相关配置，重写AnnotationBean）
-           - handler
-               - exception（全局异常处理,最后在controller抛出restful异常）
-               - mybatis（地图相关处理类）
-           - interceptor（controller单点拦截，mybatis-sql拦截输出，分页处理）
-           - logger（日志入库相关mapper,提取至公共部分）
-           - resolver（异常具体处理类）
-           - security（单点相关bean,针对前端页面单点拦截fifter）
-           - support 
-               - mybatis(基础增删改查，分页等抽象实现类)
-               - redis (redis实现类,已注入 )
-               - util （依赖spring相关jar包的util,区分smart-util下的util）
+          - annotation（自定义的一些注解）
+          - aop（controller,service拦截,日志输出）
+          - configure（核心配置,mybatis,redis,Swagger2等）
+          - constant
+          - domain（日志的相关bean）
+          - enums
+          - dubbo（启用dubbo注解相关配置，重写AnnotationBean）
+          - handler
+             - exception（全局异常处理,最后在controller抛出restful异常）
+             - mybatis（地图相关处理类）
+          - interceptor（controller单点拦截，mybatis-sql拦截输出，分页处理）
+          - logger（日志入库相关mapper,提取至公共部分）
+          - resolver（异常具体处理类）
+          - security（单点相关bean,针对前端页面单点拦截fifter）
+          - support 
+              - mybatis(基础增删改查，分页等抽象实现类)
+              - redis (redis实现类,已注入 )
+              - util （依赖spring相关jar包的util,区分smart-util下的util）
 
 - smart-traffic-api（dubbo接口2.0）
 
@@ -169,15 +169,15 @@ dubbo服务实现，其他dubbo调用
 -  **oracl(application.properties)**
 <pre>
     spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
-    spring.datasource.url=jdbc:oracle:thin:@192.168.91.153:1521:yfzx
-    spring.datasource.username=prod_idcs
-    spring.datasource.password=prod_idcs
+    spring.datasource.url=jdbc:oracle:thin:@192.168.**.**:**:yfzx
+    spring.datasource.username=***
+    spring.datasource.password=***
 </pre>
 
 -  **dubbo(application.properties)**
 <pre>
     spring.dubbo.application.name=tiom_server
-    spring.dubbo.registry.address=zookeeper://192.168.91.121:2181
+    spring.dubbo.registry.address=zookeeper://192.168.**.**:2181
     spring.dubbo.protocol.name=dubbo
     spring.dubbo.protocol.port=23202
     spring.dubbo.scan=com.enjoyor.soa.traffic.server.demo.dubbo
@@ -228,15 +228,15 @@ dubbo服务实现，其他dubbo调用
 -  **dubbo(application.properties)**
 <pre>
     spring.dubbo.application.name=tiom_rest
-    spring.dubbo.registry.address=zookeeper://192.168.91.121:2181
+    spring.dubbo.registry.address=zookeeper://192.168.**.**:2181
     spring.dubbo.scan=com.enjoyor.soa.traffic.rest.demo.dubbo,com.enjoyor.soa.traffic.frame.interceptor
 </pre>
 
 -  **sso(application.properties)**
 <pre>
     sso.client.filter[startUp]=1
-    sso.client.filter[server]=http://192.168.91.152:8081/uums-server/
-    sso.client.filter[checkUrl]=http://192.168.91.152:8081/uums-server/token/check
+    sso.client.filter[server]=http://192.168.**.**:8081/uums-server/
+    sso.client.filter[checkUrl]=http://192.168.**.**:8081/uums-server/token/check
     sso.client.filter[systemKey]=ceefba99-847b-4291-aee7-42bccc22bb53
     sso.client.filter[urlPatterns]=*.html
 </pre>
@@ -255,8 +255,8 @@ dubbo服务实现，其他dubbo调用
 
 <pre>
     sso.client.filter[startUp]=1
-    sso.client.filter[server]=http://192.168.91.152:8081/uums-server/
-    sso.client.filter[checkUrl]=http://192.168.91.152:8081/uums-server/token/check
+    sso.client.filter[server]=http://192.168.**.**:8081/uums-server/
+    sso.client.filter[checkUrl]=http://192.168.**.**:8081/uums-server/token/check
     sso.client.filter[systemKey]=ceefba99-847b-4291-aee7-42bccc22bb53
     sso.client.filter[urlPatterns]=*.html
 </pre>
