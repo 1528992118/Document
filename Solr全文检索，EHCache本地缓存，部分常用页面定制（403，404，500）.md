@@ -6,7 +6,7 @@
 
 > ### Frame新增对Solr全文检索引擎，EHCache缓存支持，分别在原生基础上进一步封装，提供CURD接口及实现；EHCache针对Mapper层数据缓存配置，Solr针对Oracl数据库同步配置；定制了部分常用的页面，诸如403，404，500。
 
-完整产品介绍请参见 [Enjoyor-Springboot 框架](https://www.zybuluo.com/1528992118/note/1180138)，上期更新见[Frame-Update-Date-8.20](https://www.zybuluo.com/1528992118/note/1115387)，本次更新特性请参见 [Features 特性](#Features)，开发使用请参见 [Development](#Development)
+本次更新特性请参见 [Features 特性](#Features)，开发使用请参见 [Development](#Development)
 
 <span id="Features"></span>
 # Features
