@@ -3,7 +3,7 @@ Frame（核心框架）Kafka集成和相关监控
 [![Release](https://img.shields.io/badge/build-springboot-green.svg)]()&nbsp;[![Build](https://img.shields.io/badge/release-2.0.0-blue.svg)]()&nbsp;[![Author](https://img.shields.io/badge/author-Xiaolong.Cao-yellow.svg)]()&nbsp;[![Time](https://img.shields.io/badge/time-2018.8.20-red.svg)]()&nbsp;
 
 # Preface
-### 本次文档针对Frame中KafaKa集成和其监控平台，完整产品介绍请参见 [Enjoyor-Springboot 框架](https://www.zybuluo.com/1528992118/note/1180138)，上期更新见[Frame-Update-Date-8.4](https://www.zybuluo.com/1528992118/note/1238219)，本次更新特性请参见 [Features 特性](#Features)，开发使用请参见 [Development](#Development)
+### 本次文档针对Frame中KafaKa集成和其监控平台，本次更新特性请参见 [Features 特性](#Features)，开发使用请参见 [Development](#Development)
 
 <span id="Features"></span>
 # Features
