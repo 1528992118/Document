@@ -1,9 +1,6 @@
 ## Enjoyor-Springboot 框架
 
-***历史版本***
-日期| 版本号| 作者
-- | :-: | -:
-2018/6/13 | V 1.0.0| 曹晓龙
+[![Release](https://img.shields.io/badge/build-springboot-green.svg)]()&nbsp;[![Build](https://img.shields.io/badge/release-2.0.0-blue.svg)]()&nbsp;[![Author](https://img.shields.io/badge/author-Xiaolong.Cao-yellow.svg)]()&nbsp;[![Time](https://img.shields.io/badge/time-2018.6.13-red.svg)]()&nbsp;
 
 ## 1.前言
 ### 1.1 ***什么是SpringBoot***
