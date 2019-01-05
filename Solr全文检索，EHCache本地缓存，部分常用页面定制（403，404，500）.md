@@ -12,7 +12,7 @@
 # Features
 * ***Solr集成***
 * **solr简介：**
-> Solr采用`Lucene`搜索库为核心，提供全文索引和搜索开源企业平台，提供REST的HTTP/XML和JSON的API，本次168服务器上搭建的为`7.2.0`版本的solr，服务器地址: http://192.168.91.168:8983/solr
+> Solr采用`Lucene`搜索库为核心，提供全文索引和搜索开源企业平台，提供REST的HTTP/XML和JSON的API，本次168服务器上搭建的为`7.2.0`版本的solr，服务器地址: http://192.168.**.**:8983/solr
 
          
 * **业务场景：** 
