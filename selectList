@@ -195,7 +195,29 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 
 > 按id查询数据，返回结果为根据clazz而具体实例化
 
+`public SolrDocumentList selectList(String coreName, String... filterQuerys)`
 
+> 按过滤条件查询，filterQuerys可为null,为null则查询全部，返回结果为SolrDocumentList，其为SolrDocument的一个集合
+
+`public List<Object> selectList(String coreName, Class<?> clazz, String... filterQuerys)`
+
+> 按过滤条件查询，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
+
+`public SolrDocumentList selectList(String coreName, String query, String... filterQuerys)`
+
+> 按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为SolrDocumentList，其为SolrDocument的一个集合
+
+`List<Object> selectList(String coreName, String query, Class<?> clazz, String... filterQuerys)`
+
+> 按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
+
+`public int selectCount(String coreName, String query, String... filterQuerys)`
+
+> 按查询条件和过滤条件查询数量，query，filterQuerys可为null,为null则查询全部
+
+`public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
+
+> 按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
 
 #### 1.2.2 使用案例：
     
