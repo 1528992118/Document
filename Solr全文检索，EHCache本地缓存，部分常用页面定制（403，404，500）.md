@@ -126,7 +126,7 @@ solr中有个很重要的概念**core**，core是solr的一个索引库，可以
 
 ":"   &nbsp;&nbsp;指定字段查指定值，如返回所有值*:*
 
-"?"   &nbsp;&nbsp;表示单个任意字符的通配
+"\?"   &nbsp;&nbsp;表示单个任意字符的通配
 
 "*"   &nbsp;&nbsp;表示多个任意字符的通配（不能在检索的项开始使用*或者?符号）
 
@@ -146,7 +146,8 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 
 {}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}
 　
-` public boolean save(String coreName, Object object)`
+
+`public boolean save(String coreName, Object object)`
 > 插入或修改数据：该方法用于被@Field注解的Object的保存,@Field用于适配Solr上的scheme.xml，如果有hibernate使用经验，应该很好理解。**(对于solr而言，其一个core相当于一个database,其下只冗余一张表，所以没有更新一说，save操作既是insert也是update)**
 
 `public boolean save(String coreName, Map<String, Object> map)`
@@ -200,8 +201,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 `public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
 > 按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
 
-1.2.2 使用案例：
-<pre>
+#### 1.2.2 使用案例：
     
     @Auth
     @RestController
@@ -274,13 +274,12 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
         
     }
     
-</pre>   
+
 
 ## 2 EHCache本地缓存使用
 ### 2.1 使用准备
-2.1.2 **配置文件(ehcache.xml)，位于项目resources目录下**
+#### 2.1.2 **配置文件(ehcache.xml)，位于项目resources目录下**
 
-<pre>
 
     <?xml version="1.0" encoding="UTF-8"?>
     <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
@@ -311,9 +310,8 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
         
     </ehcache>
     
- </pre>   
-
-2.1.2.1 配置文件说明
+ 
+##### 2.1.2.1 配置文件说明
 
 **diskStore**   &nbsp;&nbsp;指定一个文件目录，当EHCache把数据写到硬盘上时，将把数据写到这个文件目录下，也可以指定为 `<diskStore path="D:\Data\ehcache" />`
 
@@ -344,7 +342,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
     
 
 ### 2.2 使用
-2.2.1 **com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService**说明
+#### 2.2.1 **com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService**说明
 **其下每个方法，cacheName，具体为缓存名，具体在ehcache.xml以进行了配置**
 
 ` public Object get(String cacheName, Object key)`
@@ -359,8 +357,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 `   public boolean removeElment(String cacheName, String key)`
 > 删除cacheName下具体key值对应的数据。
 
-2.2.2 使用案例：
-<pre>
+#### 2.2.2 使用案例：
     @Auth
     @RestController
     @RequestMapping({ "/api/template" })
@@ -399,10 +396,10 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
          }
     
     }
-</pre>    
+
 ### 2.3 dubbo-service（添加缓存，慎用）
 
-<pre>
+
     @SuppressWarnings("rawtypes")
     @Service(version = "1.0.0", timeout = 4000)
     public class DubboTemplateService implements IDubboTemplateService {
@@ -435,9 +432,9 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
         
     }
 
-</pre>
 
-2.3.1 注解说明：
+
+#### 2.3.1 注解说明：
 
 **2.3.1.1 @Cacheable**
 >@Cacheable可以标记在一个方法上，也可以标记在一个类上。当标记在一个方法上时表示该方法是支持缓存的，当标记在一个类上时则表示该类所有的方法都是支持缓存的。对于一个支持缓存的方法，Spring会在其被调用后将其返回值缓存起来，以保证下次利用同样的参数来执行该方法时可以直接从缓存中获取结果，而不需要再次执行该方法。Spring在缓存方法的返回值时是以键值对进行缓存的，值就是方法的返回结果，至于键的话，Spring又支持两种策略，默认策略和自定义策略，这个稍后会进行说明。需要注意的是当一个支持缓存的方法在对象内部被调用时是不会触发缓存功能的。@Cacheable可以指定三个属性，value、key和condition
