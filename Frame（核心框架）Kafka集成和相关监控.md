@@ -52,9 +52,13 @@ Frame（核心框架）Kafka集成和相关监控
 
 *备注：*
 **kafka.auto-offset-reset**有以下三个偏移量：
-&nbsp;&nbsp;&nbsp;&nbsp;**earliest**：*表示当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费* 
-&nbsp;&nbsp;&nbsp;&nbsp;***latest***：*表示当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据* 
-&nbsp;&nbsp;&nbsp;&nbsp;***none***：*表示topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常*
+
+**earliest**：*表示当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费* 
+
+***latest***：*表示当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据* 
+
+***none***：*表示topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常*
+
 **kafka.group-id**  ：***某Topic下的消息想实现广播，必须指定不同kafka.group-id***
 
 1.1.2 **启动项注入配置类**
@@ -130,10 +134,10 @@ Frame（核心框架）Kafka集成和相关监控
 **3）** 消息的接收主要依赖于 `@KafkaListener`注解，需指定**containerFactory**连接为`kafkaListenerContainerFactory`
 
 ## 2 Kafka监控平台
-###2.1 产品概述
+### 2.1 产品概述
 本次产品为开源项目，GitHub地址：https://github.com/smartloli/kafka-eagle，版本为`1.2.3`，其中Kafka服务器版本为`2.11-2.0.0`，需依赖`JDK-1.8`
 
-###2.2 Download地址
+### 2.2 Download地址
  Kafka下载地址：http://kafka.apache.org/downloads.html
  Kafka-Eagle下载地址：http://download.smartloli.org
  Quickstart：https://ke.smartloli.org/2.Install/2.Installing.html
