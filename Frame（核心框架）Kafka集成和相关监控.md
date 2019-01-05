@@ -1,4 +1,4 @@
-﻿Frame（核心框架）Kafka集成和相关监控
+Frame（核心框架）Kafka集成和相关监控
 ================
 [![Release](https://img.shields.io/badge/build-springboot-green.svg)]()&nbsp;[![Build](https://img.shields.io/badge/release-2.0.0-blue.svg)]()&nbsp;[![Author](https://img.shields.io/badge/author-Xiaolong.Cao-yellow.svg)]()&nbsp;[![Time](https://img.shields.io/badge/time-2018.8.20-red.svg)]()&nbsp;
 
@@ -32,7 +32,7 @@
 
   * Kafaka-Eagle监控平台，版本为`1.2.3`，提供Kafka集群监控，`Kafka-Sql`查询等
  
-  * Kafak监控访问地址，http://192.168.91.168:8048/ke/，账号：`admin`，密码：`123456`
+  * Kafak监控访问地址，http://192.168.**.**:8048/ke/，账号：`**`，密码：`**`
 
 <span id="Development"></span>
 # Development
@@ -40,7 +40,7 @@
 ###1.1 使用准备
 1.1.1 **配置文件(kafka.properties)**
 
-    bootstrap.servers=192.168.91.168:9092
+    bootstrap.servers=192.168.**.**:9092
     kafka.group-id=default-group-id
     kafka.auto-offset-reset=earliest
 
