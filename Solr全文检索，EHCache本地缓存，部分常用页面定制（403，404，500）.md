@@ -23,24 +23,43 @@
   solr中有个很重要的概念**core**，core是solr的一个索引库，可以理解为一个数据库，core可以根据需要，创建多个，其下有个**schema.xml**用于配置索引类型，可以理解为表结构，solr-5.5版本后没有了schema.xml，可以直接在在线配置schema，不再需要去改xml
 
   * **Solr-CURD接口总览：**
+  
    `public boolean save(String coreName, Object object)` 
+   
    `public boolean save(String coreName, Map<String, Object> map)`
+   
    `public boolean saveByReflect(String coreName, Object object)`
+   
    `public int batchSave(String coreName, List<Object> list)`
+   
    `public boolean deleteById(String coreName, String id)`
+   
    `public int deleteById(String coreName, List<String> ids)`
+   
    `public boolean deleteByQuery(String coreName, String query)`
+   
    `public boolean deleteAll(String coreName)`
+   
    `public SolrDocumentList selectAll(String coreName)`
+   
    `public List<Object> selectAll(String coreName, Class<?> clazz)`
+   
    `public SolrDocument selectById(String coreName, String id)`
+   
    `public Object selectById(String coreName, String id, Class<?> clazz)`
+   
    `public SolrDocumentList selectList(String coreName, String... filterQuerys)`
+   
    `public List<Object> selectList(String coreName, Class<?> clazz, String... filterQuerys)`
+   
    `public SolrDocumentList selectList(String coreName, String query, String... filterQuerys)`
+   
    `public List<Object> selectList(String coreName, String query, Class<?> clazz, String... filterQuerys)`
+   
    `public int selectCount(String coreName, String query, String... filterQuerys)`
+   
    `public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
+   
   * 类位置：`com.enjoyor.soa.traffic.frame.support.solr.ISolrService`
   * solr同步数据库，该场景可用于某些大数据表格，通过solr的全文索引技术，加快查询速度，其具体配置跳转 [Solr配置](#SolrConfig)
 
@@ -54,9 +73,13 @@
   2.针对Dubbo-Server层进行缓存，提高某些Dubbo接口的查询速度。**（在使用前请确保已经完全理解缓存机制，避免其他内容更新后，查询的还是原来的旧数据）**
  
   * **EHCache-CURD接口总览：**
+  
   `public Object get(String cacheName, Object key);`
+  
   `public boolean set(String cacheName, String key, Object value);`
+  
   `public boolean removeCache(String cacheName);`
+  
   `public boolean removeElment(String cacheName, String key);`
 
   * 类位置：`com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService`
@@ -101,17 +124,29 @@
 | fq（filter query） | 过虑查询，提供一个可选的筛选器查询。返回在q查询符合结果中同时符合的fq条件的查询结果 | q=id:1&fq=sort:[1 TO 5]，找关键字id为1 的，并且sort是1到5之间的数据 |
 
 >**Solr的检索运算符**
+
 ":"   &nbsp;&nbsp;指定字段查指定值，如返回所有值*:*
+
 "?"   &nbsp;&nbsp;表示单个任意字符的通配
+
 "*"   &nbsp;&nbsp;表示多个任意字符的通配（不能在检索的项开始使用*或者?符号）
+
 "~"   &nbsp;&nbsp;表示模糊检索，如检索拼写类似于”roam”的项这样写：roam~将找到形如foam和roams的单       词；roam~0.8，检索返回相似度在0.8以上的记录。
+
 AND、||  布尔操作符
+
 OR、&&  布尔操作符
+
 NOT、!、-（排除操作符不能单独与项使用构成查询）
+
 "+"  存在操作符，要求符号”+”后的项必须在文档相应的域中存在²
+
 ( )  用于构成子查询
+
 []  包含范围检索，如检索某时间段记录，包含头尾，date:[201507 TO 201510]
+
 {}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}
+
 　
 
  `public boolean save(String coreName, Object object)`
@@ -401,7 +436,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 
 <span id="SolrConfig"></span>
 ## 3 Solr数据库同步(以7.2版本为例)
-###3.1 使用准备
+### 3.1 使用准备
 3.1.1 **相关下载及安装**
 
 Solr下载地址：http://archive.apache.org/dist/lucene/solr/
