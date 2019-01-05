@@ -135,7 +135,8 @@ Frame（核心框架）Kafka集成和相关监控
 
 ## 2 Kafka监控平台
 ### 2.1 产品概述
-本次产品为开源项目，GitHub地址：https://github.com/smartloli/kafka-eagle，版本为`1.2.3`，其中Kafka服务器版本为`2.11-2.0.0`，需依赖`JDK-1.8`
+本次产品为开源项目，GitHub地址：https://github.com/smartloli/kafka-eagle，
+版本为`1.2.3`，其中Kafka服务器版本为`2.11-2.0.0`，需依赖`JDK-1.8`
 
 ### 2.2 Download地址
  Kafka下载地址：http://kafka.apache.org/downloads.html
