@@ -149,7 +149,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 {}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}
 
 　
-<pre>
+
 `public boolean save(String coreName, Object object)`
 > 插入或修改数据：该方法用于被@Field注解的Object的保存,@Field用于适配Solr上的scheme.xml，如果有hibernate使用经验，应该很好理解。**(对于solr而言，其一个core相当于一个database,其下只冗余一张表，所以没有更新一说，save操作既是insert也是update)**
 
@@ -162,7 +162,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 `public int batchSave(String coreName, List<Object> list)`
 > 批量存储(插入或和更新)：该方法为批量操作数据，被操作的Object需要@Field注解，用于匹配scheme.xml，返回操作成功记录数
 
- `public boolean deleteById(String coreName, String id)`
+`public boolean deleteById(String coreName, String id)`
 > 按Id号删除数据
 
 `public int deleteById(String coreName, List<String> ids)`
@@ -171,40 +171,38 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 `public boolean deleteByQuery(String coreName, String query)`
 > 按自定义条件删除数据
 
-` public boolean deleteAll(String coreName)`
+`public boolean deleteAll(String coreName)`
 > 删除索引库下所有数据，慎用
 
-` public SolrDocumentList selectAll(String coreName)`
+`public SolrDocumentList selectAll(String coreName)`
 > 查询索引库下所有数据，返回结果为SolrDocumentList，其为SolrDocument的一个集合
 
-`  public List<Object> selectAll(String coreName, Class<?> clazz)`
+`public List<Object> selectAll(String coreName, Class<?> clazz)`
 > 查询索引库下所有数据，返回结果为List<Object>，object类型根据clazz而具体实例化
 
-`  public SolrDocument selectById(String coreName, String id)`
+`public SolrDocument selectById(String coreName, String id)`
 > 按id查询数据，返回结果为SolrDocument
 
-`  public Object selectById(String coreName, String id, Class<?> clazz)`
+`public Object selectById(String coreName, String id, Class<?> clazz)`
 > 按id查询数据，返回结果为根据clazz而具体实例化
 
-`  public SolrDocumentList selectList(String coreName, String... filterQuerys)`
+`public SolrDocumentList selectList(String coreName, String... filterQuerys)`
 > 按过滤条件查询，filterQuerys可为null,为null则查询全部，返回结果为SolrDocumentList，其为SolrDocument的一个集合
 
-`   public List<Object> selectList(String coreName, Class<?> clazz, String... filterQuerys)`
+`public List<Object> selectList(String coreName, Class<?> clazz, String... filterQuerys)`
 > 按过滤条件查询，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
 
-`  public SolrDocumentList selectList(String coreName, String query, String... filterQuerys)`
+`public SolrDocumentList selectList(String coreName, String query, String... filterQuerys)`
 > 按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为SolrDocumentList，其为SolrDocument的一个集合
 
-`  List<Object> selectList(String coreName, String query, Class<?> clazz, String... filterQuerys)`
+`List<Object> selectList(String coreName, String query, Class<?> clazz, String... filterQuerys)`
 > 按查询条件和过滤条件查询，query，filterQuerys可为null,为null则查询全部，返回结果为List<Object>，object类型根据clazz而具体实例化
 
-public int selectCount(String coreName, String query, String... filterQuerys)
+`public int selectCount(String coreName, String query, String... filterQuerys)`
 > 按查询条件和过滤条件查询数量，query，filterQuerys可为null,为null则查询全部
 
-public Page selectPage(String coreName, String query, Page page, String... filterQuerys)
-按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
-
-</pre>
+`public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
+> 按查询条件和过滤条件分页查询，query，filterQuerys可为null,为null则查询全部
 
 
 
