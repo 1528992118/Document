@@ -11,18 +11,18 @@
 <span id="Features"></span>
 # Features
 * ***Solr集成***
-  * **solr简介：**
+* **solr简介：**
 > Solr采用`Lucene`搜索库为核心，提供全文索引和搜索开源企业平台，提供REST的HTTP/XML和JSON的API，本次168服务器上搭建的为`7.2.0`版本的solr，服务器地址: http://192.168.91.168:8983/solr
 
          
-  * **业务场景：** 
-   1. solr主要用于对其他存储系统中已有的一些数据做分析，查询，然后显示结果。当然它也可以直接存储数据，但是这不是它的强项
-   2. 对原有的数据做分析，需要对文本做一些处理（格式或者其他的），然后才导入到solr中，利用solr强大的搜索功能，找到自己想要的结果
+* **业务场景：** 
+1. solr主要用于对其他存储系统中已有的一些数据做分析，查询，然后显示结果。当然它也可以直接存储数据，但是这不是它的强项
+2. 对原有的数据做分析，需要对文本做一些处理（格式或者其他的），然后才导入到solr中，利用solr强大的搜索功能，找到自己想要的结果
 
-  * **使用须知：** 
-  solr中有个很重要的概念**core**，core是solr的一个索引库，可以理解为一个数据库，core可以根据需要，创建多个，其下有个**schema.xml**用于配置索引类型，可以理解为表结构，solr-5.5版本后没有了schema.xml，可以直接在在线配置schema，不再需要去改xml
+* **使用须知：** 
+solr中有个很重要的概念**core**，core是solr的一个索引库，可以理解为一个数据库，core可以根据需要，创建多个，其下有个**schema.xml**用于配置索引类型，可以理解为表结构，solr-5.5版本后没有了schema.xml，可以直接在在线配置schema，不再需要去改xml
 
-  * **Solr-CURD接口总览：**
+* **Solr-CURD接口总览：**
   
    `public boolean save(String coreName, Object object)` 
    
@@ -60,20 +60,19 @@
    
    `public Page selectPage(String coreName, String query, Page page, String... filterQuerys)`
    
-   
-  * 类位置：`com.enjoyor.soa.traffic.frame.support.solr.ISolrService`
-  * solr同步数据库，该场景可用于某些大数据表格，通过solr的全文索引技术，加快查询速度，其具体配置跳转 [Solr配置](#SolrConfig)
+* 类位置：`com.enjoyor.soa.traffic.frame.support.solr.ISolrService`
+* solr同步数据库，该场景可用于某些大数据表格，通过solr的全文索引技术，加快查询速度，其具体配置跳转 [Solr配置](#SolrConfig)
 
 * **EHCache缓存**
 
-  * **EHCache简介：**
+* **EHCache简介：**
 > 纯Java的进程内缓存框架，具有快速、精干等特点，可支持分布式，主要面向通用缓存,Java EE和轻量级容器。Spring提供了对缓存功能的抽象：即允许绑定不同的缓存解决方案（如Ehcache），但本身不直接提供缓存功能的实现。它支持注解方式使用缓存，非常方便。
 
-  * **业务场景：** 
-  1.单应用中直接对缓存进行存储读写，避免使用HashMap这种方式造成线程安全问题，或ConcurrentHashMap 造成的线程等待。
-  2.针对Dubbo-Server层进行缓存，提高某些Dubbo接口的查询速度。**（在使用前请确保已经完全理解缓存机制，避免其他内容更新后，查询的还是原来的旧数据）**
+* **业务场景：** 
+1.单应用中直接对缓存进行存储读写，避免使用HashMap这种方式造成线程安全问题，或ConcurrentHashMap 造成的线程等待。
+2.针对Dubbo-Server层进行缓存，提高某些Dubbo接口的查询速度。**（在使用前请确保已经完全理解缓存机制，避免其他内容更新后，查询的还是原来的旧数据）**
  
-  * **EHCache-CURD接口总览：**
+* **EHCache-CURD接口总览：**
   
   `public Object get(String cacheName, Object key);`
   
@@ -84,31 +83,28 @@
   `public boolean removeElment(String cacheName, String key);`
  
 
-  * 类位置：`com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService`
-
+* 类位置：`com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService`
 * **定制页面**
-  * 这部分内容比较简单，简略叙述。针对原先系统自带的403，404，415及500错误返回页，定制了简易的新页面。
-  * 定制页面位置：`smart-traffic-frame/src/main/resources/public/error`
-  * 效果图，以404为例：
-  ![404][1]
+* 这部分内容比较简单，简略叙述。针对原先系统自带的403，404，415及500错误返回页，定制了简易的新页面。
+* 定制页面位置：`smart-traffic-frame/src/main/resources/public/error`
+* 效果图，以404为例：
+![404][1]
   
 <span id="Development"></span>
 # Development
 ## 1 Solr-CURD服务使用
-###1.1 使用准备
+### 1.1 使用准备
 1.1.1 **使用须知**
 > **使用前请确保solr服务器上有相应的core和core下对应的scheme已配置完成（可以类比为操作数据库前，必须创建数据库和相关表结构）,7.2版本可直接在相应core下在线完成配置，以168上的为例：http://192.168.91.168:8983/solr/#/template/schema**
 
 1.1.2 **配置文件(application.properties)**
-
-    spring.data.solr.host=http://192.168.91.168:8983/solr
+     `spring.data.solr.host=http://192.168.91.168:8983/solr`
 
 1.1.2.1 配置文件说明
 
 *spring.data.solr.host*   &nbsp;&nbsp;Solr服务器地址
 
 1.1.3 **启动项注入配置类**
-
     @SpringBootApplication
     @Import({ SolrConfig.class })
     public class RestApplication 
@@ -120,22 +116,34 @@
 **其下每个方法，都需要coreName，具体为索引库名，这里只说明一次；下面查询方法会反复出现`query`和`filterQuerys`，其用法可参考如下：**
 
 >**基本查询**
+
 | 参数 | 说明 | 示例 |
 | ------ | ------ | ------ |
 | q (query) | 查询的关键字，此参数最为重 | q=id:1，默认为q=\*:* |
 | fq（filter query） | 过虑查询，提供一个可选的筛选器查询。返回在q查询符合结果中同时符合的fq条件的查询结果 | q=id:1&fq=sort:[1 TO 5]，找关键字id为1 的，并且sort是1到5之间的数据 |
 
 >**Solr的检索运算符**
+
 ":"   &nbsp;&nbsp;指定字段查指定值，如返回所有值*:*
+
 "?"   &nbsp;&nbsp;表示单个任意字符的通配
+
 "*"   &nbsp;&nbsp;表示多个任意字符的通配（不能在检索的项开始使用*或者?符号）
+
 "~"   &nbsp;&nbsp;表示模糊检索，如检索拼写类似于”roam”的项这样写：roam~将找到形如foam和roams的单       词；roam~0.8，检索返回相似度在0.8以上的记录。
+
 AND、||  布尔操作符
+
 OR、&&  布尔操作符
+
 NOT、!、-（排除操作符不能单独与项使用构成查询）
+
 "+"  存在操作符，要求符号”+”后的项必须在文档相应的域中存在²
+
 ( )  用于构成子查询
+
 []  包含范围检索，如检索某时间段记录，包含头尾，date:[201507 TO 201510]
+
 {}  不包含范围检索，如检索某时间段记录，不包含头尾date:{201507 TO 201510}
 　
 ` public boolean save(String coreName, Object object)`
@@ -339,11 +347,10 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 2.2.1 **com.enjoyor.soa.traffic.frame.support.cache.IEHCacheService**说明
 **其下每个方法，cacheName，具体为缓存名，具体在ehcache.xml以进行了配置**
 
- ` public Object get(String cacheName, Object key)`
+` public Object get(String cacheName, Object key)`
 > 获取缓存数据。
 
-
- `   public boolean set(String cacheName, String key, Object value)`
+`   public boolean set(String cacheName, String key, Object value)`
 > 设置缓存数据，key值为缓存的键值。
 
 `   public boolean removeCache(String cacheName)`
@@ -433,7 +440,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 2.3.1 注解说明：
 
 **2.3.1.1 @Cacheable**
- >@Cacheable可以标记在一个方法上，也可以标记在一个类上。当标记在一个方法上时表示该方法是支持缓存的，当标记在一个类上时则表示该类所有的方法都是支持缓存的。对于一个支持缓存的方法，Spring会在其被调用后将其返回值缓存起来，以保证下次利用同样的参数来执行该方法时可以直接从缓存中获取结果，而不需要再次执行该方法。Spring在缓存方法的返回值时是以键值对进行缓存的，值就是方法的返回结果，至于键的话，Spring又支持两种策略，默认策略和自定义策略，这个稍后会进行说明。需要注意的是当一个支持缓存的方法在对象内部被调用时是不会触发缓存功能的。@Cacheable可以指定三个属性，value、key和condition
+>@Cacheable可以标记在一个方法上，也可以标记在一个类上。当标记在一个方法上时表示该方法是支持缓存的，当标记在一个类上时则表示该类所有的方法都是支持缓存的。对于一个支持缓存的方法，Spring会在其被调用后将其返回值缓存起来，以保证下次利用同样的参数来执行该方法时可以直接从缓存中获取结果，而不需要再次执行该方法。Spring在缓存方法的返回值时是以键值对进行缓存的，值就是方法的返回结果，至于键的话，Spring又支持两种策略，默认策略和自定义策略，这个稍后会进行说明。需要注意的是当一个支持缓存的方法在对象内部被调用时是不会触发缓存功能的。@Cacheable可以指定三个属性，value、key和condition
  
 ***2.3.1.2 @CachePut*** 
 >在支持Spring Cache的环境下，对于使用@Cacheable标注的方法，Spring在每次执行前都会检查Cache中是否存在相同key的缓存元素，如果存在就不再执行该方法，而是直接从缓存中获取结果进行返回，否则才会执行并将返回结果存入指定的缓存中。@CachePut也可以声明一个方法支持缓存功能。与@Cacheable不同的是使用@CachePut标注的方法在执行前不会去检查缓存中是否存在之前执行过的结果，而是每次都会执行该方法，并将执行结果以键值对的形式存入指定的缓存中。
@@ -445,7 +452,7 @@ NOT、!、-（排除操作符不能单独与项使用构成查询）
 
 <span id="SolrConfig"></span>
 ## 3 Solr数据库同步(以7.2版本为例)
-###3.1 使用准备
+### 3.1 使用准备
 3.1.1 **相关下载及安装**
 
 Solr下载地址：http://archive.apache.org/dist/lucene/solr/
@@ -511,7 +518,7 @@ Solr安装信息：http://www.cnblogs.com/tony-zt/p/9260017.html
        </requestHandler>	
 
   
-  ***3，在【YourDisk- Address\solr-7.2.0\server\solr\template\conf】目录下新建一个data-config.xml文件，并添加如下内容：***
+***3，在【YourDisk- Address\solr-7.2.0\server\solr\template\conf】目录下新建一个data-config.xml文件，并添加如下内容：***
  
 >注：如果要用到分批导入数据，则必须配置**deltaImportQuery**和**deltaQuery**，**deltaQuer**y方法默认只能查询一个主键参数，不要多写，另外，注意 `pk="ID"，${dih.delta.ID}，<field column="ID" name="ID" />`  这几个值需要一致
   
@@ -536,17 +543,16 @@ Solr安装信息：http://www.cnblogs.com/tony-zt/p/9260017.html
         </dataConfig>
 
 
- ***4 重新启动Solr,选择template,点击左侧栏的schema，创建与data-config.xml相对应的Filed字段，再点击左侧栏的Dataimport，点击Execute，会显示indexing…，再点击Refresh Status，数据就导入进来了***
+***4 重新启动Solr,选择template,点击左侧栏的schema，创建与data-config.xml相对应的Filed字段，再点击左侧栏的Dataimport，点击Execute，会显示indexing…，再点击Refresh Status，数据就导入进来了***
 ![solr2.png-51.2kB][3]
 
 ![solr3.png-40.7kB][4]
 
-  ***5 结果查看***
- ![solr4.png-51.9kB][5]
+***5 结果查看***
+![solr4.png-51.9kB][5]
 
-
-  [1]: http://static.zybuluo.com/1528992118/92a7gvm7lxhoaz7ozyb2ophy/404.png
-  [2]: http://static.zybuluo.com/1528992118/nbjj5ns70o95ig00joanqllk/solr_1.png
-  [3]: http://static.zybuluo.com/1528992118/7d6d8pe8u1zryduvzj0vn2d8/solr2.png
-  [4]: http://static.zybuluo.com/1528992118/9s47xjlmn44wj7oa54f0804z/solr3.png
-  [5]: http://static.zybuluo.com/1528992118/5kss38ljdpmuvo7l7op9plo8/solr4.png
+[1]: http://static.zybuluo.com/1528992118/92a7gvm7lxhoaz7ozyb2ophy/404.png
+[2]: http://static.zybuluo.com/1528992118/nbjj5ns70o95ig00joanqllk/solr_1.png
+[3]: http://static.zybuluo.com/1528992118/7d6d8pe8u1zryduvzj0vn2d8/solr2.png
+[4]: http://static.zybuluo.com/1528992118/9s47xjlmn44wj7oa54f0804z/solr3.png
+[5]: http://static.zybuluo.com/1528992118/5kss38ljdpmuvo7l7op9plo8/solr4.png
