@@ -95,11 +95,11 @@ solr中有个很重要的概念**core**，core是solr的一个索引库，可以
 ## 1 Solr-CURD服务使用
 ### 1.1 使用准备
 1.1.1 **使用须知**
-> **使用前请确保solr服务器上有相应的core和core下对应的scheme已配置完成（可以类比为操作数据库前，必须创建数据库和相关表结构）,7.2版本可直接在相应core下在线完成配置，以168上的为例：http://192.168.91.168:8983/solr/#/template/schema**
+> **使用前请确保solr服务器上有相应的core和core下对应的scheme已配置完成（可以类比为操作数据库前，必须创建数据库和相关表结构）,7.2版本可直接在相应core下在线完成配置，以168上的为例：http://192.168.**.**:8983/solr/#/template/schema**
 
 1.1.2 **配置文件(application.properties)**
 
-    spring.data.solr.host=http://192.168.91.168:8983/solr
+    spring.data.solr.host=http://192.168.**.**:8983/solr
 
 1.1.2.1 配置文件说明
 
