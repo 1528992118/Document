@@ -49,7 +49,7 @@
   *file.handle.resource*   &nbsp;&nbsp;结合上面的`file-dir`，表示`D://FileTest`下文件被`fileResource/**`映射 
   *file.handle.mapping-addr* &nbsp;&nbsp;不能随便写，要和`file.handle.resource`制定的相同，如无必要`file.handle.file-addr`，`file.handle.resource`不需要修改
   
-** 备注：** 实际开发中，需要修改的，基本只有`suffixs`，`file-dir`，`file-addr`
+#### 备注： 实际开发中，需要修改的，基本只有`suffixs`，`file-dir`，`file-addr`
 
 #### 1.1.2 启动项注入配置类
 
