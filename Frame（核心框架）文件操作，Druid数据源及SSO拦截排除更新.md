@@ -24,11 +24,11 @@
 
   * 本次更新，争对特定Controller下的某个API请求，@Auth注解新增excludes字段，可以有效排除具体API对于Token的验证
 
- * excludes字段是一个数组，支持多个API排除，排除的为Controller中的具体实现方法，而不是Mapping-URL
+  * excludes字段是一个数组，支持多个API排除，排除的为Controller中的具体实现方法，而不是Mapping-URL
 
 * ***Druid连接池说明***
 
- * frame中已依赖druid集成环境的starter包，直接在application.properties配置文件中进行相关设置，即可使用，无需其他操作。
+  * frame中已依赖druid集成环境的starter包，直接在application.properties配置文件中进行相关设置，即可使用，无需其他操作。
   
 <span id="Development"></span>
 # Development
@@ -47,9 +47,9 @@
   *file.handle.file-dir*   &nbsp;&nbsp;表示文件上传的磁盘地址 
   *file.handle.file-addr*   &nbsp;&nbsp;表示文件上传成功后，返回应用所在服务器地址 
   *file.handle.resource*   &nbsp;&nbsp;结合上面的`file-dir`，表示`D://FileTest`下文件被`fileResource/**`映射 
-*file.handle.mapping-addr* &nbsp;&nbsp;不能随便写，要和`file.handle.resource`制定的相同，如无必要`file.handle.file-addr`，`file.handle.resource`不需要修改
-
-**备注：**实际开发中，需要修改的，基本只有`suffixs`，`file-dir`，`file-addr`
+  *file.handle.mapping-addr* &nbsp;&nbsp;不能随便写，要和`file.handle.resource`制定的相同，如无必要`file.handle.file-addr`，`file.handle.resource`不需要修改
+  
+** 备注：** 实际开发中，需要修改的，基本只有`suffixs`，`file-dir`，`file-addr`
 
 #### 1.1.2 启动项注入配置类
 
