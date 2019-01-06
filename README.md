@@ -1,6 +1,6 @@
 框架说明文档
 ================
-[![Release](https://img.shields.io/badge/build-springboot-green.svg)]()&nbsp;[![Build](https://img.shields.io/badge/release-2.0.0-blue.svg)]()&nbsp;[![Author](https://img.shields.io/badge/author-Xiaolong.Cao-yellow.svg)]()&nbsp;[![Time](https://img.shields.io/badge/time-2018.8.5-red.svg)]()&nbsp;
+[![Release](https://img.shields.io/badge/build-springboot-green.svg)]()&nbsp;[![Build](https://img.shields.io/badge/release-2.0.0-blue.svg)]()&nbsp;[![Author](https://img.shields.io/badge/author-Xiaolong.Cao-yellow.svg)]()&nbsp;[![Time](https://img.shields.io/badge/time-2018.10.5-red.svg)]()&nbsp;
 
 # Preface
 
