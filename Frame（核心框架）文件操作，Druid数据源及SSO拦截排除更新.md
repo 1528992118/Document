@@ -43,11 +43,15 @@
     file.handle.mapping-addr=fileResource
     
 ##### 1.1.1.2 配置文件说明
-  *file.handle.suffixs*   &nbsp;&nbsp;表示支持的上传文件类型 
-  *file.handle.file-dir*   &nbsp;&nbsp;表示文件上传的磁盘地址 
-  *file.handle.file-addr*   &nbsp;&nbsp;表示文件上传成功后，返回应用所在服务器地址 
-  *file.handle.resource*   &nbsp;&nbsp;结合上面的`file-dir`，表示`D://FileTest`下文件被`fileResource/**`映射 
-  *file.handle.mapping-addr* &nbsp;&nbsp;不能随便写，要和`file.handle.resource`制定的相同，如无必要`file.handle.file-addr`，`file.handle.resource`不需要修改
+*file.handle.suffixs*   &nbsp;&nbsp;表示支持的上传文件类型 
+
+*file.handle.file-dir*   &nbsp;&nbsp;表示文件上传的磁盘地址 
+
+*file.handle.file-addr*   &nbsp;&nbsp;表示文件上传成功后，返回应用所在服务器地址 
+
+*file.handle.resource*   &nbsp;&nbsp;结合上面的`file-dir`，表示`D://FileTest`下文件被`fileResource/**`映射 
+
+*file.handle.mapping-addr* &nbsp;&nbsp;不能随便写，要和`file.handle.resource`制定的相同，如无必要`file.handle.file-addr`，`file.handle.resource`不需要修改
   
 #### 备注： 实际开发中，需要修改的，基本只有`suffixs`，`file-dir`，`file-addr`
 
